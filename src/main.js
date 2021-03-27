@@ -3,6 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import './assets/rem'
+import './assets/reset.css'
+import { Col, Row } from 'vant';
+
+import { Button } from 'vant';
+
+Vue.use(Button).use(Col).use(Row);
 
 Vue.config.productionTip = false
 
