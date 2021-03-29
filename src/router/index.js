@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import IndexWrap from '@/components/IndexWrap'
+import home from '@/components/Home'
+import payment from '@/components/Payment'
+import me from '@/components/Me'
+import account from '@/components/second/Account'
+import houseInfo from '@/components/second/houseInfo'
 
 Vue.use(Router)
 
@@ -8,8 +13,39 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/home'
+    },
+    {
+      path: '/',
       name: 'IndexWrap',
-      component: IndexWrap
+      component: IndexWrap,
+      children: [
+        {
+          path: '/home',
+          name: home,
+          component: home
+        },
+        {
+          path: '/payment',
+          name: payment,
+          component: payment
+        },
+        {
+          path: '/me',
+          name: me,
+          component: me
+        }
+      ]
+    },
+    {
+      path: '/account',
+      name: account,
+      component: account
+    },
+    {
+      path: '/houseInfo',
+      name: houseInfo,
+      component: houseInfo
     }
   ]
 })

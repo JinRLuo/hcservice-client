@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar title="我" fixed="true" placeholder="true" class="topBar"/>
-    <van-row type="flex" justify="space-between" class="accountFlex">
+    <van-row type="flex" justify="space-between" class="accountFlex" @click="toAccount">
       <van-col span="4" class="leftFlex">
         <van-image class="head-img" round
           src="https://img01.yzcdn.cn/vant/cat.jpeg"
@@ -14,14 +14,14 @@
         <van-icon name="arrow" color="#D3B39F" size="0.5rem"/>
       </van-col>
     </van-row>
-    <van-cell title="房产信息" is-link to="index" class="houseInfo"/>
+    <van-cell title="房产信息" is-link to="/houseInfo" class="houseInfo"/>
     <van-cell title="退出登录" is-link to="index" @click="logout" class="exit"/>
   </div>
 </template>
 
 <script>
 export default {
-  name: "account",
+  name: "me",
   data() {
     return {
       username: 'test0001'
@@ -30,15 +30,18 @@ export default {
   methods: {
     logout: function () {
       this.$dialog.confirm({
-        title: '标题',
-        message: '弹窗内容',
+        title: '退出登录',
+        message: '你真的要退出当前账号吗？',
       })
         .then(() => {
-          // on confirm
+          this.$router.replace('/login');
         })
         .catch(() => {
-          // on cancel
+          this.$router.back();
         });
+    },
+    toAccount: function () {
+      this.$router.push('/account');
     }
   }
 }
