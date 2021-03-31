@@ -18,10 +18,18 @@ import { Icon } from 'vant'
 import { PullRefresh } from 'vant';
 import { Dialog } from 'vant';
 import { Toast } from 'vant';
+import { Form } from 'vant';
+import { Field } from 'vant';
+import { Tab, Tabs } from 'vant';
+import { Calendar } from 'vant';
+import { Picker } from 'vant';
+import { DatetimePicker } from 'vant';
+import { Popup } from 'vant';
 
 Vue.use(Button).use(Col).use(Row).use(NavBar).use(Swipe).use(SwipeItem)
   .use(Tabbar).use(TabbarItem).use(Grid).use(GridItem).use(Lazyload).use(Cell)
-  .use(CellGroup).use(VanImage).use(Icon).use(PullRefresh).use(Dialog).use(Toast);
+  .use(CellGroup).use(VanImage).use(Icon).use(PullRefresh).use(Dialog).use(Toast)
+  .use(Form).use(Field).use(Tab).use(Tabs).use(Calendar).use(Picker).use(DatetimePicker).use(Popup);
 
 Vue.config.productionTip = false
 

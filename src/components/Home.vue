@@ -15,7 +15,7 @@
     <!-- 功能按钮 -->
     <div class="buttonsTag">小区服务</div>
     <van-grid :column-num="4" square="true" class="buttonsList liveService">
-      <van-grid-item v-for="(sb, index) in serviceButton" :key="index" :icon="sb.icon" :text="sb.name" />
+      <van-grid-item v-for="(sb, index) in serviceButton" :key="index" :icon="sb.icon" :text="sb.name" :to="sb.url" />
     </van-grid>
     <div class="buttonsTag">生活缴费</div>
     <van-grid :column-num="4" square="true" class="buttonsList livePayment">
@@ -37,33 +37,40 @@ export default {
       serviceButton: [
         {
           name: '小区地图',
-          icon: 'location-o'
+          icon: 'location-o',
+          url: ''
         },
         {
           name: '小区公告',
-          icon: 'newspaper-o'
+          icon: 'newspaper-o',
+          url: ''
         },
         {
           name: '访客预约',
-          icon: 'user-o'
+          icon: 'user-o',
+          url: '/visitor'
         },
         {
           name: '设备报修',
-          icon: 'setting-o'
+          icon: 'setting-o',
+          url: ''
         },
         {
           name: '服务投诉',
-          icon: 'comment-o'
+          icon: 'comment-o',
+          url: ''
         }
       ],
       paymentButton: [
         {
           name: '电费缴纳',
-          icon: 'dianfeijiaofei'
+          icon: 'dianfeijiaofei',
+          url: ''
         },
         {
           name: '水费缴纳',
-          icon: 'shuifei'
+          icon: 'shuifei',
+          url: ''
         },
         {
           name: '停车费缴纳',

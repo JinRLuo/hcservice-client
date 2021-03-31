@@ -1,11 +1,6 @@
 <template>
   <div>
-    <van-nav-bar
-      title="账号"
-      left-text="返回"
-      left-arrow
-      @click-left="onClickLeft"
-    />
+    <van-nav-bar title="账号" left-text="返回" left-arrow @click-left="onClickLeft" fixed="true" placeholder="true"/>
 
   </div>
 </template>
