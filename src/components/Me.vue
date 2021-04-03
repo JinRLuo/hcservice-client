@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="我" fixed="true" placeholder="true" class="topBar"/>
+    <van-nav-bar title="我" :fixed=true :placeholder=true class="topBar"/>
     <van-row type="flex" justify="space-between" class="accountFlex" @click="toAccount">
       <van-col span="4" class="leftFlex">
         <van-image class="head-img" round

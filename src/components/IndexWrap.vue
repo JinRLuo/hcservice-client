@@ -1,7 +1,7 @@
 <template>
   <div class="indexWrap">
     <router-view/>
-    <van-tabbar v-model="active" route class="footBar" placeholder="true">
+    <van-tabbar v-model="active" route class="footBar" :placeholder=true>
       <van-tabbar-item name="home" to="/home" icon="wap-home-o">社区</van-tabbar-item>
       <van-tabbar-item name="friends" to="/payment" icon="cash-back-record">缴费</van-tabbar-item>
       <van-tabbar-item name="setting" to="/me" icon="friends-o">个人</van-tabbar-item>

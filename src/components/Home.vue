@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 顶部栏 -->
-    <van-nav-bar title="业主服务系统" fixed="true" placeholder="true" />
+    <van-nav-bar title="业主服务系统" :fixed=true :placeholder=true />
 
 
 
@@ -14,11 +14,11 @@
 
     <!-- 功能按钮 -->
     <div class="buttonsTag">小区服务</div>
-    <van-grid :column-num="4" square="true" class="buttonsList liveService">
+    <van-grid :column-num="4" :square=true class="buttonsList liveService">
       <van-grid-item v-for="(sb, index) in serviceButton" :key="index" :icon="sb.icon" :text="sb.name" :to="sb.url" />
     </van-grid>
     <div class="buttonsTag">生活缴费</div>
-    <van-grid :column-num="4" square="true" class="buttonsList livePayment">
+    <van-grid :column-num="4" :square=true class="buttonsList livePayment">
       <van-grid-item v-for="(pb, index) in paymentButton" :key="index" icon="photo-o" :text="pb.name" >
         <van-icon class="iconfont" class-prefix="icon" slot="icon" :name="pb.icon" size=".7rem"></van-icon>
       </van-grid-item>
@@ -102,14 +102,6 @@ export default {
 </script>
 
 <style scoped>
-.topBar{
-  font-family: Microsoft YaHei;
-  height: 1.2rem;
-  font-size: .5rem;
-  text-align: center;
-  line-height: 1.2rem;
-  background: #ffffff;
-}
 .my-swipe .van-swipe-item {
   color: #fff;
   font-size: 20px;

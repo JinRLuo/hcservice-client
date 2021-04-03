@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import "@/assets/font/iconfont.css"
 import 'amfe-flexible';
+import './utils/request'
 import { Col, Row } from 'vant';
 import { NavBar } from 'vant';
 import { Button } from 'vant';
@@ -25,11 +26,14 @@ import { Calendar } from 'vant';
 import { Picker } from 'vant';
 import { DatetimePicker } from 'vant';
 import { Popup } from 'vant';
+import { Notify } from 'vant';
+import axios from 'axios'
+import store from './store'
 
 Vue.use(Button).use(Col).use(Row).use(NavBar).use(Swipe).use(SwipeItem)
   .use(Tabbar).use(TabbarItem).use(Grid).use(GridItem).use(Lazyload).use(Cell)
   .use(CellGroup).use(VanImage).use(Icon).use(PullRefresh).use(Dialog).use(Toast)
-  .use(Form).use(Field).use(Tab).use(Tabs).use(Calendar).use(Picker).use(DatetimePicker).use(Popup);
+  .use(Form).use(Field).use(Tab).use(Tabs).use(Calendar).use(Picker).use(DatetimePicker).use(Popup).use(axios).use(store).use(Notify);
 
 Vue.config.productionTip = false
 
@@ -37,6 +41,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
