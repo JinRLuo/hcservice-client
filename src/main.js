@@ -27,13 +27,17 @@ import { Picker } from 'vant';
 import { DatetimePicker } from 'vant';
 import { Popup } from 'vant';
 import { Notify } from 'vant';
+import { Uploader } from 'vant';
+import { Divider } from 'vant';
+import { Popover } from 'vant';
 import axios from 'axios'
 import store from './store'
 
 Vue.use(Button).use(Col).use(Row).use(NavBar).use(Swipe).use(SwipeItem)
   .use(Tabbar).use(TabbarItem).use(Grid).use(GridItem).use(Lazyload).use(Cell)
   .use(CellGroup).use(VanImage).use(Icon).use(PullRefresh).use(Dialog).use(Toast)
-  .use(Form).use(Field).use(Tab).use(Tabs).use(Calendar).use(Picker).use(DatetimePicker).use(Popup).use(axios).use(store).use(Notify);
+  .use(Form).use(Field).use(Tab).use(Tabs).use(Calendar).use(Picker).use(DatetimePicker).use(Popup).use(axios)
+  .use(Notify).use(Uploader).use(Divider).use(Popover);
 
 Vue.config.productionTip = false
 
@@ -42,6 +46,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  axios,
   components: { App },
   template: '<App/>'
 })

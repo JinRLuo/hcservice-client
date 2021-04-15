@@ -3,8 +3,6 @@
     <!-- 顶部栏 -->
     <van-nav-bar title="业主服务系统" :fixed=true :placeholder=true />
 
-
-
       <!-- 轮播图 -->
     <van-swipe class="my-swipe" :autoplay="4000" indicator-color="white">
       <van-swipe-item v-for="(image, index) in images" :key="index">
@@ -19,8 +17,8 @@
     </van-grid>
     <div class="buttonsTag">生活缴费</div>
     <van-grid :column-num="4" :square=true class="buttonsList livePayment">
-      <van-grid-item v-for="(pb, index) in paymentButton" :key="index" icon="photo-o" :text="pb.name" >
-        <van-icon class="iconfont" class-prefix="icon" slot="icon" :name="pb.icon" size=".7rem"></van-icon>
+      <van-grid-item v-for="(pb, index) in paymentButton" :key="index" icon="photo-o" :text="pb.name" :to="pb.url">
+        <van-icon class="iconfont" class-prefix="icon" slot="icon" :name="pb.icon" size=".7rem" ></van-icon>
       </van-grid-item>
     </van-grid>
 
@@ -43,7 +41,7 @@ export default {
         {
           name: '小区公告',
           icon: 'newspaper-o',
-          url: ''
+          url: '/notice'
         },
         {
           name: '访客预约',
@@ -53,32 +51,24 @@ export default {
         {
           name: '设备报修',
           icon: 'setting-o',
-          url: ''
+          url: '/repair'
         },
         {
           name: '服务投诉',
           icon: 'comment-o',
-          url: ''
+          url: '/complaint'
         }
       ],
       paymentButton: [
         {
-          name: '电费缴纳',
-          icon: 'dianfeijiaofei',
-          url: ''
-        },
-        {
-          name: '水费缴纳',
-          icon: 'shuifei',
-          url: ''
-        },
-        {
           name: '停车费缴纳',
-          icon: 'cheliang'
+          icon: 'cheliang',
+          url: '/carInfo'
         },
         {
           name: '物业费缴纳',
-          icon: 'wuyefei'
+          icon: 'wuyefei',
+          url: '/serviceCost'
         }
       ],
       images: [

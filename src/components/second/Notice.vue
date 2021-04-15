@@ -1,12 +1,13 @@
 <template>
-  <div class="houseInfoPage">
-    <van-nav-bar title="房产信息" left-text="返回" right-text="绑定房产" left-arrow @click-left="onClickLeft" @click-right="onAddHouseInfo" :fixed=true :placeholder=true />
+  <div class="notify">
+    <van-nav-bar title="小区公告" left-text="返回" left-arrow @click-left="backPage" :fixed=true :placeholder=true />
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh" >
       <div style="min-height: 80vh;">
-        <div class="bindInfoTab" v-for="info in bindInfo">
-          <div>{{info.buildingNum}}幢{{info.roomNum}}房</div>
-          <div>面积：{{info.area}}平方米</div>
-          <div>所有人：{{info.name}}</div>
+        <div class="noticeTab" v-for="notice in notices">
+          <div>{{notice.title}}</div>
+          <hr>
+          <div>{{notice.content}}</div>
+          <div>{{notice.adminName}}  {{notice.createDate}}</div>
         </div>
       </div>
     </van-pull-refresh>
@@ -17,24 +18,21 @@
 import {post} from "../../utils/request";
 
 export default {
-  name: "HouseInfo",
+  name: "Notice",
   data () {
     return {
       isLoading: false,
-      bindInfo: [],
+      notices: [],
     }
   },
   methods: {
-    onClickLeft() {
+    backPage: function () {
       this.$router.back();
     },
-    onAddHouseInfo() {
-      this.$router.push('/bindHome');
-    },
     onRefresh() {
-      post('/api/homeOwner/user/getBindHouse',).then(res => {
+      post('/api/hc/user/getNotice').then(res => {
         if(res.status == 'success'){
-          this.bindInfo = res.data;
+          this.notices = res.data;
           setTimeout(() => {
             this.$toast('刷新成功');
             this.isLoading = false;
@@ -45,32 +43,32 @@ export default {
             this.isLoading = false;
           }, 1);
         }
-      }).catch(err => {
+      }).catch(err =>
+      {
         setTimeout(() => {
-          this.$toast('网络错误');
+          this.$toast('刷新失败');
           this.isLoading = false;
         }, 1);
       });
+
     },
   },
-  created() {
-    post('/api/homeOwner/user/getBindHouse',).then(res => {
+  created: function () {
+    post('/api/hc/user/getNotice').then(res => {
       if(res.status == 'success'){
-        this.bindInfo = res.data;
+        this.notices = res.data;
       }
-    }).catch(err => {
-
     });
   }
 }
 </script>
 
 <style scoped>
-.houseInfoPage {
+.notify {
   background: #F8F5FC;
   min-height: 100vh;
 }
-.bindInfoTab {
+.noticeTab {
   font-size: 0.35rem;
   padding: .2rem;
   margin: .3rem 0 0 0;

@@ -52,26 +52,24 @@ export default {
       return /\d{6}/.test(val);
     },
     onSubmit: function () {
-      post("/api/hc/user/login", this.loginInfo).then(res => {
-        console.log(res)
+      post("/api/hc/user/loginByOtp", this.loginInfo).then(res => {
         if (res.status == 'fail') {
           this.$notify({type: 'warning', message: res.data.errMsg });
-          console.log(this.errorMessage.otpCodeError);
         } else {
+          this.errorMessage.phoneNumError = '';
+          this.errorMessage.otpCodeError = '';
           this.$store.commit('SET_TOKEN', res.data);
-          console.log(this.$store.getters.token);
+          this.$notify({type: 'success', message: '登录成功！'});
           this.$router.replace('/home');
         }
       }).catch(err => {
-        console.log("error");
-        console.log(err);
+        this.$notify({type: 'warning', message: '网络错误！'});
       });
-      // this.$router.replace('/home');
     },
     sendOtp: function () {
-      console.log(this.phoneValidator(this.loginInfo.phoneNum));
+      this.errorMessage.phoneNumError = '';
       if (this.phoneValidator(this.loginInfo.phoneNum) == false) {
-        this.errorMessage.phoneNumError = '手机号格式错误'
+        this.errorMessage.phoneNumError = '手机号格式错误';
       } else {
         post("/api/hc/user/getOtp", {phoneNum: this.loginInfo.phoneNum}).then(res => {
           if (res.status == 'success') {
@@ -81,7 +79,7 @@ export default {
             this.$notify({type: 'warning', message: res.data.errMsg});
           }
         }).catch(err => {
-
+          this.$notify({type: 'warning', message: '网络错误！'});
         })
       }
     }
@@ -96,13 +94,13 @@ export default {
 }
 .link-passwordLogin {
   text-align: left;
-  font-size: .1rem;
+  font-size: .3rem;
   padding: .2rem 0 .2rem 1rem;
   color: blue;
 }
 .link-register {
   text-align: right;
-  font-size: .1rem;
+  font-size: .3rem;
   padding: .2rem 1rem .2rem 0;
   color: blue;
 }

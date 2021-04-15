@@ -1,6 +1,7 @@
 import axios from 'axios'
 import store from '../store'
 import { Toast } from 'vant'
+import router from "../router";
 import qs from 'qs'
 // 根据环境不同引入不同api地址
 import { BASE_API } from '../../config/index'
@@ -36,17 +37,14 @@ service.interceptors.response.use(
   response => {
     Toast.clear()
     const res = response.data
-    // if (res.status && res.status !== 200) {
-    //   // 登录超时,重新登录
-    //   if (res.status === 401) {
-    //     store.dispatch('FedLogOut').then(() => {
-    //       location.reload()
-    //     })
-    //   }
-    //   return Promise.reject(res || 'error')
-    // } else {
-       return Promise.resolve(res)
-    // }
+    if(res.status == 'fail' && res.data == 'ACCOUNT_NOT_LOGIN') {
+      store.commit('CLEAR_TOKEN');
+      store.commit('CLEAR_USER_INFO');
+      return Promise.reject(res);
+    } else {
+      return Promise.resolve(res);
+    }
+
   },
   error => {
     Toast.clear()
@@ -64,6 +62,12 @@ export function get(url, params) {
 export function post(url, data) {
   return service.post(url, qs.stringify(data), {
     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+  });
+}
+
+export function postFile(url, fd) {
+  return service.post(url, fd, {
+    headers: {'Content-Type': 'multipart/form-data'}
   });
 }
 

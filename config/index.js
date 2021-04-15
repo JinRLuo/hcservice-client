@@ -13,8 +13,9 @@ module.exports = {
     proxyTable: {
       //配置跨域
       '/api': {
-        target: 'http://127.0.0.1:8888', // 接口的域名
+        target: 'http://42.192.232.73:8888', // 接口的域名
         changOrigin: true, // 开启代理，在本地创建一个虚拟服务端
+        logLevel: 'debug',
         pathRewrite: {
           '^/api': ''
         }

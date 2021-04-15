@@ -3,12 +3,10 @@
     <van-nav-bar title="我" :fixed=true :placeholder=true class="topBar"/>
     <van-row type="flex" justify="space-between" class="accountFlex" @click="toAccount">
       <van-col span="4" class="leftFlex">
-        <van-image class="head-img" round
-          src="https://img01.yzcdn.cn/vant/cat.jpeg"
-        />
+        <van-image class="head-img" round :src="imageUrl"/>
       </van-col>
       <van-col span="13" class="midFlex">
-        <span>{{username}}</span>
+        <div class="van-ellipsis">{{usernameDisplay}}</div>
       </van-col>
       <van-col span="1" class="rightFlex">
         <van-icon name="arrow" color="#D3B39F" size="0.5rem"/>
@@ -24,7 +22,21 @@ export default {
   name: "me",
   data() {
     return {
-      username: 'test0001'
+
+    }
+  },
+  computed: {
+    usernameDisplay () {
+      let userInfo = this.$store.getters.userInfo;
+      if(userInfo) {
+        return userInfo.userName;
+      }else {
+        return '您还未登录';
+      }
+    },
+    imageUrl () {
+      let url = 'https://hcservice-image-1256980503.cos.ap-guangzhou.myqcloud.com/' + this.$store.getters.userInfo.pictureUrl;
+      return url;
     }
   },
   methods: {
@@ -34,6 +46,8 @@ export default {
         message: '你真的要退出当前账号吗？',
       })
         .then(() => {
+          this.$store.commit('CLEAR_USER_INFO');
+          this.$store.commit('CLEAR_TOKEN');
           this.$router.replace('/login');
         })
         .catch(() => {
