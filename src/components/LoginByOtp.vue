@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="logo" src="../image/logo.png"/>
+    <img class="logo" src="https://hcservice-image-1256980503.cos.ap-guangzhou.myqcloud.com/logo/logo.png"/>
     <van-form @submit="onSubmit">
       <van-field :error-message="errorMessage.phoneNumError" v-model="loginInfo.phoneNum" label="手机号" placeholder="请输入手机号" :rules="[{ validator: phoneValidator, message: '手机号格式错误' }]" />
       <van-field :error-message="errorMessage.otpCodeError" v-model="loginInfo.otpCode" center clearable label="短信验证码" placeholder="请输入六位短信验证码" :rules="[{ validator: otpValidator, message: '验证码格式错误' }]">

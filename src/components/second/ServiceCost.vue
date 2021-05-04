@@ -3,17 +3,23 @@
     <van-nav-bar title="物业缴费" left-text="返回" left-arrow @click-left="onClickLeft" :fixed=true :placeholder=true />
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh" >
       <div style="min-height: 80vh;">
-        <div class="serviceCostTab" v-for="record in serviceCostRecord">
-          <van-row>
-            <van-col span="18">
-              <div>房间号：{{record.buildingNum}}幢{{record.roomNum}}房</div>
-              <div>时间：{{record.time}}</div>
-              <div>应缴金额：{{record.cost/100}}元</div>
-            </van-col>
-            <van-col span="6">
-              <van-button square type="primary" @click="payServiceCost(record.costId)">缴费</van-button>
-            </van-col>
-          </van-row>
+        <div v-if="serviceCostRecord.length < 1" class="emptyImage">
+          <van-empty description="您当前暂无待缴账单" />
+        </div>
+        <div v-else >
+          <div class="serviceCostTab"  v-for="record in serviceCostRecord">
+            <van-row>
+              <van-col span="18">
+                <div>房间号：{{record.buildingNum}}幢{{record.roomNum}}房</div>
+                <div>时间：{{record.time}}</div>
+                <div>应缴金额：{{record.cost/100}}元</div>
+              </van-col>
+              <van-col span="6">
+                <van-button square type="primary" @click="payServiceCost(record.costId)">缴费</van-button>
+              </van-col>
+            </van-row>
+          </div>
+
         </div>
       </div>
     </van-pull-refresh>
@@ -88,7 +94,7 @@ export default {
   font-size: 0.35rem;
   padding: .2rem;
   margin: .3rem 0 0 0;
-  height: 6em;
+  height: 2rem;
   width: 100%;
   background: #ffffff;
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 顶部栏 -->
-    <van-nav-bar title="业主服务系统" :fixed=true :placeholder=true />
+    <van-nav-bar title="西山龙胤" :fixed=true :placeholder=true />
 
       <!-- 轮播图 -->
     <van-swipe class="my-swipe" :autoplay="4000" indicator-color="white">
@@ -72,11 +72,11 @@ export default {
         }
       ],
       images: [
-        require('../image/swipe1.png'),
-        require('../image/swipe2.png'),
-        require('../image/swipe3.png'),
-        require('../image/swipe4.png'),
-        require('../image/swipe5.png')
+        'https://hcservice-image-1256980503.cos.ap-guangzhou.myqcloud.com/swipe/swipe1.png',
+        'https://hcservice-image-1256980503.cos.ap-guangzhou.myqcloud.com/swipe/swipe2.png',
+        'https://hcservice-image-1256980503.cos.ap-guangzhou.myqcloud.com/swipe/swipe3.png',
+        'https://hcservice-image-1256980503.cos.ap-guangzhou.myqcloud.com/swipe/swipe4.png',
+        'https://hcservice-image-1256980503.cos.ap-guangzhou.myqcloud.com/swipe/swipe5.png'
       ],
     }
   },

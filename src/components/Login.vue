@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img class="logo" src="../image/logo.png"/>
+    <img class="logo" src="https://hcservice-image-1256980503.cos.ap-guangzhou.myqcloud.com/logo/logo.png"/>
     <van-form @submit="onSubmit">
       <van-field  v-model="phoneNum" label="手机号" placeholder="请输入手机号" :rules="[{ validator: phoneValidator, message: '手机号格式错误' }]" />
       <van-field v-model="password" type="password" label="密码" placeholder="密码" :rules="[{ required: true, message: '请填写密码' }]"/>

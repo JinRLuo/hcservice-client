@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import IndexWrap from '@/components/IndexWrap'
 import home from '@/components/Home'
-import payment from '@/components/Payment'
 import me from '@/components/Me'
 import account from '@/components/second/Account'
 import houseInfo from '@/components/second/houseInfo'
@@ -39,11 +38,6 @@ const routes = [
         path: '/home',
         name: home,
         component: home
-      },
-      {
-        path: '/payment',
-        name: payment,
-        component: payment
       },
       {
         path: '/me',
@@ -141,16 +135,16 @@ const router =  new Router({
 
 router.beforeEach(function (to, from, next) {
   // 权限拦截 认为有token 让过去 没token不让过
-  if (to.path.startsWith('/account')) {
+  if (to.path == '/register' || to.path ==  '/login' || to.path == '/loginByOtp' || to.path == '/home' || to.path == '/me') {
+    next(); // 直接放过
+  } else {
     let token = store.getters.token;
     if (token) {
       next() // 放过
     } else {
       Notify({type: 'warning', message: '请先登录！'});
-      next('/loginByOtp') // 跳转到登录页
+      next('/loginByOtp'); // 跳转到登录页
     }
-  } else {
-    next() // 直接放过
   }
 })
 
