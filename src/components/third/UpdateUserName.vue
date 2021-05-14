@@ -2,7 +2,7 @@
   <div class="setUserName">
     <van-nav-bar title="设置昵称" left-text="返回" right-text="完成" left-arrow @click-left="backPage" @click-right="onUpdate" :fixed=true :placeholder=true />
     <van-form @submit="">
-    <van-cell-group title="长度为6-20,只接受数字、字母和下划线">
+    <van-cell-group title="长度为6-20,只接受数字、字母、中文和下划线">
       <van-field v-model="userName" label="昵称" maxlength="20" autofocus=true :rules="[{ validator: nameValidator, message: '格式错误' }]"/>
     </van-cell-group>
     </van-form>
@@ -41,7 +41,7 @@ export default {
       }
     },
     nameValidator (val) {
-      return /^[\w]{6,20}$/.test(val);
+      return /^[\u4e00-\u9fa5_a-zA-Z0-9]{6,20}$/.test(val);
     }
   },
   computed: {
