@@ -28,7 +28,7 @@ export default {
       return /^(([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-Z](([0-9]{5}[DF])|([DF]([A-HJ-NP-Z0-9])[0-9]{4})))|([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-Z][A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳使领]))$/.test(value);
     },
     onSubmit: function (value) {
-      post('/api/car/user/addCarInfo',value).then(res => {
+      post('/api/hc/user/addCarInfo',value).then(res => {
         if (res.status == 'success') {
           this.$notify({type: 'success', message: '添加成功！'});
           this.$router.back();

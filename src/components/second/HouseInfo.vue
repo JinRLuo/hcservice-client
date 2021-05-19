@@ -32,7 +32,7 @@ export default {
       this.$router.push('/bindHome');
     },
     onRefresh() {
-      post('/api/homeOwner/user/getBindHouse',).then(res => {
+      post('/api/hc/user/getBindHouse',).then(res => {
         if(res.status == 'success'){
           this.bindInfo = res.data;
           setTimeout(() => {
@@ -54,7 +54,7 @@ export default {
     },
   },
   created() {
-    post('/api/homeOwner/user/getBindHouse',).then(res => {
+    post('/api/hc/user/getBindHouse',).then(res => {
       if(res.status == 'success'){
         this.bindInfo = res.data;
       }

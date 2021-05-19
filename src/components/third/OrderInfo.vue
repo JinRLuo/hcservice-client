@@ -27,7 +27,7 @@ export default {
       this.$router.back();
     },
     paymentOrder() {
-      post('/api/order/user/payOrder', {orderId: this.orderId}).then(res => {
+      post('/api/hc/user/payOrder', {orderId: this.orderId}).then(res => {
         if (res.status == "success") {
           this.$notify({type: 'success', message: '支付成功！'});
           this.$router.back();
@@ -42,7 +42,7 @@ export default {
   },
   created() {
     this.orderId = this.$route.params.orderId;
-    post('/api/order/user/getOrderInfo', {orderId: this.orderId}).then(res => {
+    post('/api/hc/user/getOrderInfo', {orderId: this.orderId}).then(res => {
       if(res.status == 'success'){
         this.orderInfo = res.data;
       }

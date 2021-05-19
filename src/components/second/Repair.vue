@@ -70,7 +70,7 @@ export default {
       }
       // fd.append('multipartFiles', values.multipartFiles[0]);
       console.log(fd);
-      postFile('/api/repairInfo/user/reportRepair',fd).then(res => {
+      postFile('/api/hc/user/reportRepair',fd).then(res => {
         if(res.status == 'success') {
           this.$notify({type: 'success', message: '报修成功'});
           this.active = 1;
@@ -83,7 +83,7 @@ export default {
       })
     },
     onRefresh() {
-      post('/api/repairInfo/user/getRepairRecord').then(res => {
+      post('/api/hc/user/getRepairRecord').then(res => {
         if(res.status == 'success'){
           this.repairRecords = res.data;
           setTimeout(() => {

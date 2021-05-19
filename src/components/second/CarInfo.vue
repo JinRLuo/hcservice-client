@@ -62,7 +62,7 @@ export default {
       this.$router.push('/addCarInfo');
     },
     onRefresh() {
-      post('/api/car/user/getCarInfo').then(res => {
+      post('/api/hc/user/getCarInfo').then(res => {
         if(res.status == 'success'){
           this.carInfos = res.data;
           setTimeout(() => {
@@ -93,7 +93,7 @@ export default {
       }
     },
     onSelect(action,index) {
-      post('/api/order/user/createCarChargeOrder', {type: index, itemId: this.carId}).then(res => {
+      post('/api/hc/user/createCarChargeOrder', {type: index, itemId: this.carId}).then(res => {
         if(res.status == 'success'){
           this.$router.push('/orderInfo/'+res.data);
         } else {
@@ -108,7 +108,7 @@ export default {
     }
   },
   created() {
-    post('/api/car/user/getCarInfo',).then(res => {
+    post('/api/hc/user/getCarInfo',).then(res => {
       if(res.status == 'success') {
         this.carInfos = res.data;
       }

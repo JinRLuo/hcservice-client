@@ -72,7 +72,7 @@ export default {
       this.showAddressPicker = false;
     },
     onSubmit(values) {
-      post('/api/homeOwner/user/bindHomeOwnerInfo',{name: this.name, credentialType: this.credentialType, credentialNum: this.credentialNum, buildingNum: this.buildingNum, roomNum: this.roomNum, phoneNum: this.phoneNum }).then(res => {
+      post('/api/hc/user/bindHomeOwnerInfo',{name: this.name, credentialType: this.credentialType, credentialNum: this.credentialNum, buildingNum: this.buildingNum, roomNum: this.roomNum, phoneNum: this.phoneNum }).then(res => {
         if(res.status == 'success'){
           this.$notify({type: 'success', message: '提交成功，待管理员审核！'});
           this.$router.back();

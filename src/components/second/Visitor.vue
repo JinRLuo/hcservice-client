@@ -125,7 +125,7 @@ export default {
     onSubmit: function () {
       let yy = new Date();
       let visitTime = dayjs(this.date+ ' ' + this.time).format('YYYY-MM-DD HH:mm:ss');
-      post('/api/visit/user/subscribe',{visitTime: visitTime, buildingNum: this.building, roomNum: this.room, visitingReason: this.visitingReason, visitorName: this.visitorName, phoneNum: this.phoneNum, peopleCount: this.peopleCount, remark: this.remark}).then(res => {
+      post('/api/hc/user/subscribe',{visitTime: visitTime, buildingNum: this.building, roomNum: this.room, visitingReason: this.visitingReason, visitorName: this.visitorName, phoneNum: this.phoneNum, peopleCount: this.peopleCount, remark: this.remark}).then(res => {
         if(res.status == 'success') {
           this.$notify({type: 'success', message: '预约成功'});
           this.active = 1;
@@ -137,7 +137,7 @@ export default {
       });
     },
     onRefresh() {
-      post('/api/visit/user/getRecord',).then(res => {
+      post('/api/hc/user/getRecord',).then(res => {
         if(res.status == 'success'){
           this.visitRecords = res.data;
         }

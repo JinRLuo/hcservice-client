@@ -42,7 +42,7 @@ export default {
       this.$router.back();
     },
     payServiceCost(costId) {
-      post('/api/order/user/createServiceCostChargeOrder',{costId: costId}).then(res => {
+      post('/api/hc/user/createServiceCostChargeOrder',{costId: costId}).then(res => {
         if(res.status == 'success'){
           this.$router.push('/orderInfo/'+res.data);
         } else {
@@ -53,7 +53,7 @@ export default {
       });
     },
     onRefresh() {
-      post('/api/serviceCost/user/getServiceCostRecord').then(res => {
+      post('/api/hc/user/getServiceCostRecord').then(res => {
         if(res.status == 'success'){
           this.serviceCostRecord = res.data;
           setTimeout(() => {
@@ -76,7 +76,7 @@ export default {
     }
   },
   created() {
-    post('/api/serviceCost/user/getServiceCostRecord', {}).then(res => {
+    post('/api/hc/user/getServiceCostRecord', {}).then(res => {
       if(res.status == 'success'){
         this.serviceCostRecord = res.data;
       }
